@@ -1,7 +1,22 @@
-﻿@{
+﻿@model IEnumerable<Airoport.Models.City>
+@{
     ViewBag.Title = "About";
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+
+
+<div>
+    <h3>Распродажа городов</h3>
+        <table>
+            <tr><td><p>Название города</p></td>
+            </tr>
+            @foreach (var b in ViewBag.Cities)
+            {
+            <tr>
+                <td><p>@b.Name</p></td>
+            </tr>
+            }
+        </table>
+</div>
