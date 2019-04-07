@@ -25,7 +25,10 @@ namespace Airoport.Models
         public int[] TicketListId { get; set; }
         public DateTime DateRegistration { get; set; } // readonly
 
-        public Client() { }
+        public Client() : base()
+        {
+
+        }
 
         public Client(string _surname, string _name) :
             base(_surname, _name)

@@ -19,7 +19,7 @@ namespace Airoport.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Возможные города для путишествия";
             IEnumerable<City> citiesDb = db.Cities;
             ViewBag.Cities = citiesDb;
             return View();
