@@ -36,6 +36,14 @@ namespace Airoport.Models
             {
                 db.Cities.Add(new City(city));
             }
+
+            db.Clients.Add(new Client("Иван", "Пупкин"));
+            db.Clients.Add(new Client("Евгений", "Пупкин"));
+            db.Clients.Add(new Client("Василий", "Пупкин"));
+            db.Clients.Add(new Client("Еватерина", "Соколова"));
+            db.Clients.Add(new Client("Ксения", "Соколова"));
+            db.Clients.Add(new Client("Иван", "Соколова"));
+
             base.Seed(db);
         }
     }

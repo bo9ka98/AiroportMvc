@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "SearchClient";
+}
+
+<div>
+    @using (Ajax.BeginForm("SearchClientResult", new AjaxOptions
+    {
+        UpdateTargetId = "results",
+        InsertionMode = InsertionMode.Replace,
+        HttpMethod = "POST"
+    }))
+    {
+        <h2>Поиск пассажира</h2>
+        <table>
+            <tr>
+                <p>Введите имя: </p>
+                @Html.TextBox("Name")
+            </tr>
+            <tr>
+                <p>Введите фамилию: </p>
+                <td>@Html.TextBox("Surname")</td>
+                <td align="right"><input type="submit" value="Поиск" /></td>
+            </tr>
+        </table>
+    }
+
+    <div id="results"></div>
+</div>
+

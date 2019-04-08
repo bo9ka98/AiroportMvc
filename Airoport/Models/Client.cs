@@ -7,12 +7,12 @@ namespace Airoport.Models
 {
     public class Man
     {
-        public string Surname { get; set; }
         public string Name { get; set; }
+        public string Surname { get; set; }
 
         public Man() { }
 
-        public Man(string _surname, string _name)
+        public Man(string _name, string _surname)
         {
             Surname = _surname;
             Name = _name;
@@ -30,10 +30,16 @@ namespace Airoport.Models
 
         }
 
-        public Client(string _surname, string _name) :
-            base(_surname, _name)
+        public Client(string _name, string _surname) :
+            base(_name, _surname)
         {
             DateRegistration = DateTime.Now;
         }
+
+        public void AddTicket(Ticket _ticket)
+        {
+
+        }
+
     }
 }

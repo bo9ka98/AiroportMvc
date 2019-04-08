@@ -10,7 +10,7 @@ namespace Airoport.Models
         public int Id { get; set; }
         public string Name { get; set; } // set временный
 
-        public City()
+        public City() //из-за DB
         {
 
         }
