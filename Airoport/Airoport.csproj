@@ -183,6 +183,7 @@
     <Content Include="Views\Clients\SearchClientResult.cshtml" />
     <Content Include="Views\Ticket\Create.cshtml" />
     <Content Include="Views\Clients\Create.cshtml" />
+    <Content Include="Views\Ticket\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

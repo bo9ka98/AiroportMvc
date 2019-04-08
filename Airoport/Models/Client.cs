@@ -22,23 +22,16 @@ namespace Airoport.Models
     public class Client : Man
     {
         public int Id { get; set; }
-        public int[] TicketListId { get; set; }
-        public DateTime DateRegistration { get; set; } // readonly
-
-        public Client() : base()
-        {
-
-        }
+        public List<int> TicketListId { get; set; }
 
         public Client(string _name, string _surname) :
             base(_name, _surname)
         {
-            DateRegistration = DateTime.Now;
         }
 
         public void AddTicket(Ticket _ticket)
         {
-
+            TicketListId.Add(_ticket.Id);
         }
 
     }
