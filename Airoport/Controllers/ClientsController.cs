@@ -9,12 +9,36 @@ namespace Airoport.Controllers
 {
     public class ClientsController : Controller
     {
-        ClientContext db = ClientContext.getInstance();
+        ClientContext db = new ClientContext();
+        //TicketContext dbTicket = new TicketContext();
 
         // GET: Clients
         public ActionResult Index()
         {
             return View();
+        }
+
+        // GET: Clients/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Clients/Create
+        [HttpPost]
+        public ActionResult Create(FormCollection collection)
+        {
+            try
+            {
+
+                // TODO: Add insert logic here
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
         }
 
         public ActionResult SearchClient()
@@ -25,10 +49,11 @@ namespace Airoport.Controllers
         [HttpPost]
         public ActionResult SearchClientResult(Man _man)
         {
-            var allClients = db.Clients.Where(a => (a.Surname.Contains(_man.Surname) || a.Name.Contains(_man.Name))).ToList();
+            var all= db.Clients.ToList();
+            var allClients = db.Clients.Where(a => a.Id != -5).ToList(); //(a.Surname.Contains(_man.Surname) || a.Name.Contains(_man.Name))
             if (allClients.Count <= 0)
             {
-                //return ViewBag.Message = " не найдено =(";
+                return HttpNotFound(); 
             }
             return PartialView("SearchClientResult", allClients);
         }

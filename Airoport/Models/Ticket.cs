@@ -10,16 +10,21 @@ namespace Airoport.Models
         public int Id { get; set; }
         public City CityStart { get; set; } //set
         public City CityFinish { get; set; } //set
-        public DateTime Date { get; set; } //set
+        public DateTime DateTravels { get; set; } //set
+        public DateTime DateBy { get; set; } //set
         public bool Registered { get; set; } // set private
 
-        public Ticket() { }
+        public Ticket()
+        {
 
-        public Ticket(City _start, City _finish, DateTime _date)
+        }
+
+        public void Tickett(City _start, City _finish, DateTime _date)
         {
             CityStart = _start;
             CityFinish = _finish;
-            Date = _date;
+            DateTravels = _date;
+            DateBy = DateTime.Now;
         }
 
         public void RegisteredLanding()

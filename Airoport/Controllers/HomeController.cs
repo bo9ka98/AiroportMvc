@@ -9,7 +9,7 @@ namespace Airoport.Controllers
 {
     public class HomeController : Controller
     {
-        ClientContext db = ClientContext.getInstance();
+        CityContext db = new CityContext();
 
         public ActionResult Index()
         {
