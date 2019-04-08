@@ -24,6 +24,11 @@ namespace Airoport.Models
         public int Id { get; set; }
         public List<int> TicketListId { get; set; }
 
+        public Client()
+        {
+
+        }
+
         public Client(string _name, string _surname) :
             base(_name, _surname)
         {

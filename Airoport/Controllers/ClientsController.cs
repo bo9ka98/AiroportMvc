@@ -49,8 +49,7 @@ namespace Airoport.Controllers
         [HttpPost]
         public ActionResult SearchClientResult(Man _man)
         {
-            var all= db.Clients.ToList();
-            var allClients = db.Clients.Where(a => a.Id != -5).ToList(); //(a.Surname.Contains(_man.Surname) || a.Name.Contains(_man.Name))
+            var allClients = db.Clients.Where(a => (a.Surname.Contains(_man.Surname) || a.Name.Contains(_man.Name))).ToList(); 
             if (allClients.Count <= 0)
             {
                 return HttpNotFound(); 
