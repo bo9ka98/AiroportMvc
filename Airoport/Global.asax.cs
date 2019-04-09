@@ -19,8 +19,9 @@ namespace Airoport
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            //Database.SetInitializer(new CitiesDbInitialize());//init DB ClientsDbInitialize
-            //Database.SetInitializer(new ClientsDbInitialize());
+            Database.SetInitializer(new CitiesDbInitialize());//init DB ClientsDbInitialize
+            Database.SetInitializer(new ClientsDbInitialize());
+            Database.SetInitializer(new TicketDbInitialize());
 
         }
     }
