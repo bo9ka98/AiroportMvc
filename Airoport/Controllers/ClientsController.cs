@@ -10,7 +10,6 @@ namespace Airoport.Controllers
     public class ClientsController : Controller
     {
         ClientContext db = new ClientContext();
-        //TicketContext dbTicket = new TicketContext();
 
         // GET: Clients
         public ActionResult Index()
@@ -21,6 +20,7 @@ namespace Airoport.Controllers
         // GET: Clients/Create
         public ActionResult Create()
         {
+            ViewBag.Title = "Регистрация нового пользователя";
             return View();
         }
 
@@ -30,9 +30,15 @@ namespace Airoport.Controllers
         {
             try
             {
-                if (client.Name != null && client.Surname != null) { 
+                if (client.Name != null && client.Surname != null) {
+                    
                     db.Clients.Add(client);
                     db.SaveChanges();
+                }
+                else
+                {
+                    ViewBag.Message = "Неверные данные";
+                    return View();
                 }
                 // TODO: Add insert logic here
                 return RedirectToAction("SearchClient");
@@ -51,11 +57,18 @@ namespace Airoport.Controllers
         [HttpPost]
         public ActionResult SearchClientResult(Man _man)
         {
-            var allClients = db.Clients.Where(a => (a.Surname.Contains(_man.Surname) || a.Name.Contains(_man.Name))).ToList(); 
-            if (allClients.Count <= 0)
+            var allClientsByName = db.Clients.Where(a => (a.Name.Contains(_man.Name))).ToList();
+            var allClientsBySurname = db.Clients.Where(a => (a.Surname.Contains(_man.Surname))).ToList();
+            var allClients = db.Clients.Where(a => (a.Surname.Contains(_man.Surname) || a.Name.Contains(_man.Name))).ToList();
+
+            if (allClientsByName.Count + allClientsBySurname.Count <= 0)
             {
                 return HttpNotFound(); 
             }
+
+            ViewBag.allClientsByName = allClientsByName;
+            ViewBag.allClientsBySurname = allClientsBySurname;
+
             return PartialView("SearchClientResult", allClients);
         }
     }

@@ -1,16 +1,19 @@
 ﻿@model IEnumerable<Airoport.Models.Client>
 
 <div id="searchresults">
+
     <h3>Совпадения: @ViewBag.Message </h3>
     <ul>
-        @foreach (var item in Model)
-        {
-            <li>
-                <p>
-                    @item.Name
-                    @item.Surname
-                </p>
-            </li>
-        }
+            @foreach (var item in Model)
+            {
+                <li>
+                    <p>
+                        @item.Name
+                        @item.Surname
+                        <a href="/Ticket/Create/@item.Id">Купить</a>
+                    </p>
+                </li>
+            }
     </ul>
+
 </div>

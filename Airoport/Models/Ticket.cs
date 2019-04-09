@@ -8,6 +8,7 @@ namespace Airoport.Models
     public class Ticket
     {
         public int Id { get; set; }
+        public int ClientId { get; set; }
         public City CityStart { get; set; } //set
         public City CityFinish { get; set; } //set
         public DateTime DateTravels { get; set; } //set

@@ -9,10 +9,12 @@ namespace Airoport.Controllers
 {
     public class TicketController : Controller
     {
+        TicketContext dbTicket = new TicketContext();
         // GET: Ticket
         public ActionResult Index()
         {
-            return View();
+            IEnumerable<Ticket> tickets = dbTicket.Tickets;
+            return View(tickets);
         }
 
         // GET: Ticket/Details/5
@@ -24,16 +26,18 @@ namespace Airoport.Controllers
         // GET: Ticket/Create
         public ActionResult Create(int id)
         {
+            ViewBag.ClientId = id;
             return View();
         }
 
         // POST: Ticket/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Ticket ticket)
         {
             try
             {
-                // TODO: Add insert logic here
+                dbTicket.Tickets.Add(ticket);
+                dbTicket.SaveChanges();
 
                 return RedirectToAction("Index");
             }

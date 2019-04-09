@@ -1,0 +1,39 @@
+﻿<!--
+        <h4> Частичные совпадения по имени: </h4>
+        <ul>
+            @foreach (var item in @ViewBag.allClientByName)
+            {
+                <li>
+                    <p>
+                        @item.Name
+                        @item.Surname
+                    </p>
+                </li>
+            }
+        </ul>
+
+
+
+        <h4> Частичные совпадения по фамилии: </h4>
+        <ul>
+            @foreach (var item in @ViewBag.allClientBySurname)
+            {
+                <li>
+                    <p>
+                        @item.Name
+                        @item.Surname
+                    </p>
+                </li>
+            }
+        </ul>
+    -->
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Registered, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        <div class="checkbox">
+            @Html.EditorFor(model => model.Registered)
+            @Html.ValidationMessageFor(model => model.Registered, "", new { @class = "text-danger" })
+        </div>
+    </div>
+</div>
