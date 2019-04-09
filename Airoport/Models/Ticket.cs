@@ -20,7 +20,7 @@ namespace Airoport.Models
 
         }
 
-        public void Tickett(int _start, int _finish, DateTime _date)
+        public Ticket(int _start, int _finish, DateTime _date)
         {
             CityStart = _start;
             CityFinish = _finish;
