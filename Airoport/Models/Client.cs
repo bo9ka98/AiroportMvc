@@ -22,7 +22,7 @@ namespace Airoport.Models
     public class Client : Man
     {
         public int Id { get; set; }
-        public List<int> TicketListId { get; set; }
+        public List<Ticket> TicketListId { get; set; }
 
         public Client()
         {
@@ -36,7 +36,7 @@ namespace Airoport.Models
 
         public void AddTicket(Ticket _ticket)
         {
-            TicketListId.Add(_ticket.Id);
+            TicketListId.Add(_ticket);
         }
 
     }

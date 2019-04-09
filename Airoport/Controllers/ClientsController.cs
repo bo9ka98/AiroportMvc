@@ -9,12 +9,12 @@ namespace Airoport.Controllers
 {
     public class ClientsController : Controller
     {
-        ClientContext db = new ClientContext();
+        AService service = AService.GetInstance();
 
         // GET: Clients
         public ActionResult Index()
         {
-            return View();
+            return View(service.GetEnumerableForClientContext());
         }
 
         // GET: Clients/Create
@@ -28,25 +28,22 @@ namespace Airoport.Controllers
         [HttpPost]
         public ActionResult Create(Client client)
         {
-            try
-            {
-                if (client.Name != null && client.Surname != null) {
-                    
-                    db.Clients.Add(client);
-                    db.SaveChanges();
+            if (client.Name != null && client.Surname != null) {
+                    if (service.AddElementInClientContext(client))
+                    {
+                        return RedirectToAction("SearchClient");
+                    }
+                    else
+                    {
+                        ViewBag.Message = "Ошибка контекста";
+                        return View();
+                    }
                 }
                 else
                 {
                     ViewBag.Message = "Неверные данные";
                     return View();
                 }
-                // TODO: Add insert logic here
-                return RedirectToAction("SearchClient");
-            }
-            catch
-            {
-                return View();
-            }
         }
 
         public ActionResult SearchClient()
@@ -57,9 +54,9 @@ namespace Airoport.Controllers
         [HttpPost]
         public ActionResult SearchClientResult(Man _man)
         {
-            var allClientsByName = db.Clients.Where(a => (a.Name.Contains(_man.Name))).ToList();
-            var allClientsBySurname = db.Clients.Where(a => (a.Surname.Contains(_man.Surname))).ToList();
-            var allClients = db.Clients.Where(a => (a.Surname.Contains(_man.Surname) || a.Name.Contains(_man.Name))).ToList();
+            var allClientsByName = service.GetClientContext().Clients.Where(a => (a.Name.Contains(_man.Name))).ToList();
+            var allClientsBySurname = service.GetClientContext().Clients.Where(a => (a.Surname.Contains(_man.Surname))).ToList();
+            var allClients = service.GetClientContext().Clients.Where(a => (a.Surname.Contains(_man.Surname) || a.Name.Contains(_man.Name))).ToList();
 
             if (allClientsByName.Count + allClientsBySurname.Count <= 0)
             {

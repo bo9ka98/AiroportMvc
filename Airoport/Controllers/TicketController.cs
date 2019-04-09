@@ -9,18 +9,18 @@ namespace Airoport.Controllers
 {
     public class TicketController : Controller
     {
-        TicketContext dbTicket = new TicketContext();
+        AService service = AService.GetInstance();
+
         // GET: Ticket
         public ActionResult Index()
         {
-            IEnumerable<Ticket> tickets = dbTicket.Tickets;
-            return View(tickets);
+            return View(service.GetEnumerableForTicketContext());
         }
 
         // GET: Ticket/Details/5
         public ActionResult Details(int id)
         {
-            Ticket ticket = dbTicket.Tickets.Where(a => a.Id == id).First();
+            Ticket ticket = service.GetTicketContext().Tickets.Where(a => a.Id == id).First();
             return View(ticket);
         }
 
@@ -28,21 +28,19 @@ namespace Airoport.Controllers
         public ActionResult Create(int id)
         {
             ViewBag.ClientId = id;
-            return View();
+            return View(service.GetSelectListForCities());
         }
 
         // POST: Ticket/Create
         [HttpPost]
         public ActionResult Create(Ticket ticket)
         {
-            try
+            ticket.DateBy = DateTime.Now;
+            if (service.AddElementInTicketContext(ticket))
             {
-                dbTicket.Tickets.Add(ticket);
-                dbTicket.SaveChanges();
-
                 return RedirectToAction("Index");
             }
-            catch
+            else
             {
                 return View();
             }
@@ -80,15 +78,11 @@ namespace Airoport.Controllers
         [HttpPost]
         public ActionResult Delete(int id, Ticket ticket)
         {
-            try
-            {
-                dbTicket.Tickets.Remove(ticket);
-                dbTicket.SaveChanges();
-                // TODO: Add delete logic here
-
+            if(service.RemoveElementOfTicketContext(ticket))
+            { 
                 return RedirectToAction("Index");
             }
-            catch
+            else
             {
                 return View();
             }
