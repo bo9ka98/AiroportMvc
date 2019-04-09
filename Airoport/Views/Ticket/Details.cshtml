@@ -1,0 +1,50 @@
+﻿@model Airoport.Models.Ticket
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Ticket</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateTravels)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateTravels)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Registered)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Registered)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

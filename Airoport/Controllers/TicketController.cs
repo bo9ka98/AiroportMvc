@@ -20,7 +20,8 @@ namespace Airoport.Controllers
         // GET: Ticket/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            Ticket ticket = dbTicket.Tickets.Where(a => a.Id == id).First();
+            return View(ticket);
         }
 
         // GET: Ticket/Create
@@ -77,10 +78,12 @@ namespace Airoport.Controllers
 
         // POST: Ticket/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, Ticket ticket)
         {
             try
             {
+                dbTicket.Tickets.Remove(ticket);
+                dbTicket.SaveChanges();
                 // TODO: Add delete logic here
 
                 return RedirectToAction("Index");
