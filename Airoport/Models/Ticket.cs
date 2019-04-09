@@ -20,11 +20,11 @@ namespace Airoport.Models
 
         }
 
-        public void Tickett(int departCityId, int arrivalCityId, DateTime _date)
+        public Ticket(int departCityId, int arrivalCityId, DateTime dateTravels)
         {
             DepartCityId = departCityId;
             ArrivalCityId = arrivalCityId;
-            DateTravels = _date;
+            DateTravels = dateTravels;
             DateBuy = DateTime.Now;
         }
 
