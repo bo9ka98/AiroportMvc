@@ -28,7 +28,9 @@ namespace Airoport.Controllers
         public ActionResult Create(int id)
         {
             ViewBag.ClientId = id;
-            return View(service.GetSelectListForCities());
+            //ViewData["Cities"]
+            ViewBag.Cities = service.GetCityContext().Cities;
+            return View();
         }
 
         // POST: Ticket/Create

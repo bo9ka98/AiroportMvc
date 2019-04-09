@@ -94,7 +94,11 @@ namespace Airoport.Models
         }
         public SelectList GetSelectListForCities()
         {
-            return new SelectList (dbCity.Cities, "Name", "City");
+            return new SelectList(dbCity.Cities, "Id", "Name");
+        }
+        public IEnumerable<SelectListItem> GetSelectListForCities(string kay)
+        {
+            return new SelectList(dbCity.Cities, "Name", kay);
         }
 
     }

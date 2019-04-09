@@ -9,8 +9,8 @@ namespace Airoport.Models
     {
         public int Id { get; set; }
         public int ClientId { get; set; }
-        public City CityStart { get; set; } //set
-        public City CityFinish { get; set; } //set
+        public int CityStart { get; set; } //set
+        public int CityFinish { get; set; } //set
         public DateTime DateTravels { get; set; } //set
         public DateTime DateBy { get; set; } //set
         public bool Registered { get; set; } // set private
@@ -20,7 +20,7 @@ namespace Airoport.Models
 
         }
 
-        public void Tickett(City _start, City _finish, DateTime _date)
+        public void Tickett(int _start, int _finish, DateTime _date)
         {
             CityStart = _start;
             CityFinish = _finish;
