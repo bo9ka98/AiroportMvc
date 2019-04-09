@@ -15,10 +15,16 @@
             @Html.DisplayNameFor(model => model.ClientId)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.DepartCityId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArrivalCityId)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.DateTravels)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DateBy)
+            @Html.DisplayNameFor(model => model.DateBuy)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Registered)
@@ -32,18 +38,24 @@
             @Html.DisplayFor(modelItem => item.ClientId)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.DepartCityId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArrivalCityId)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.DateTravels)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DateBy)
+            @Html.DisplayFor(modelItem => item.DateBuy)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Registered)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>
 }

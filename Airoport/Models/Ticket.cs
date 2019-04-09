@@ -9,10 +9,10 @@ namespace Airoport.Models
     {
         public int Id { get; set; }
         public int ClientId { get; set; }
-        public int CityStart { get; set; } //set
-        public int CityFinish { get; set; } //set
+        public int DepartCityId { get; set; } //set
+        public int ArrivalCityId { get; set; } //set
         public DateTime DateTravels { get; set; } //set
-        public DateTime DateBy { get; set; } //set
+        public DateTime DateBuy { get; set; } //set
         public bool Registered { get; set; } // set private
 
         public Ticket()
@@ -20,12 +20,12 @@ namespace Airoport.Models
 
         }
 
-        public void Tickett(int _start, int _finish, DateTime _date)
+        public void Tickett(int departCityId, int arrivalCityId, DateTime _date)
         {
-            CityStart = _start;
-            CityFinish = _finish;
+            DepartCityId = departCityId;
+            ArrivalCityId = arrivalCityId;
             DateTravels = _date;
-            DateBy = DateTime.Now;
+            DateBuy = DateTime.Now;
         }
 
         public void RegisteredLanding()

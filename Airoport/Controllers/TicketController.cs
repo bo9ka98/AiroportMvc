@@ -29,7 +29,7 @@ namespace Airoport.Controllers
         {
             ViewBag.ClientId = id;
             //ViewData["Cities"]
-            ViewBag.Cities = service.GetCityContext().Cities;
+            ViewData["Cities"] = service.GetCityContext().Cities;
             return View();
         }
 
@@ -37,7 +37,8 @@ namespace Airoport.Controllers
         [HttpPost]
         public ActionResult Create(Ticket ticket)
         {
-            ticket.DateBy = DateTime.Now;
+            ticket.DateBuy = DateTime.Now;
+            ticket.Id = 0;
             if (service.AddElementInTicketContext(ticket))
             {
                 return RedirectToAction("Index");
