@@ -1,20 +1,32 @@
-﻿@model IEnumerable<Airoport.Models.City>
+﻿@using Airoport.Models
 @{
     ViewBag.Title = "About";
 }
 
-<h3>@ViewBag.Message</h3>
-
-
-
 <div>
-        <table>
-            </tr>
-            @foreach (var b in ViewBag.Cities)
-            {
+    <h3>@ViewBag.MessageCity</h3>
+
+    <table>
+        @foreach (var Cities in ViewBag.Cities)
+        {
             <tr>
-                <td><p>@b.Name</p></td>
+                <td>@Cities.Id</td>
+                <td>@Cities.Name</td>
             </tr>
-            }
-        </table>
+        }
+    </table>
+</div>  
+<div>
+    <h3>@ViewBag.MassageClient</h3>
+
+    <table>
+        @foreach (var Clients in ViewBag.Clients)
+        {
+            <tr>
+                <td>@Clients.Name</td>
+                <td>@Clients.Surname</td>
+            </tr>
+        }
+    </table>
+
 </div>

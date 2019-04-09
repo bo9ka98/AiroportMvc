@@ -9,19 +9,22 @@ namespace Airoport.Controllers
 {
     public class HomeController : Controller
     {
-        CityContext db = new CityContext();
+        CityContext dbCity = new CityContext();
+        ClientContext dbClient = new ClientContext();
 
         public ActionResult Index()
         {
-
             return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Возможные города для путишествия";
-            IEnumerable<City> citiesDb = db.Cities;
+            ViewBag.MessageCity = "Возможные города для путишествия";
+            IEnumerable<City> citiesDb = dbCity.Cities;
             ViewBag.Cities = citiesDb;
+            ViewBag.MassageClient = "Возможные клиенты";
+            IEnumerable<Client> clientDb = dbClient.Clients;
+            ViewBag.Clients = clientDb;
             return View();
         }
 

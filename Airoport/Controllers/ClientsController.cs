@@ -26,14 +26,16 @@ namespace Airoport.Controllers
 
         // POST: Clients/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Client client)
         {
             try
             {
-
+                if (client.Name != null && client.Surname != null) { 
+                    db.Clients.Add(client);
+                    db.SaveChanges();
+                }
                 // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                return RedirectToAction("SearchClient");
             }
             catch
             {
