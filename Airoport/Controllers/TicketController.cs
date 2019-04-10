@@ -21,6 +21,7 @@ namespace Airoport.Controllers
             return View(service.FindTicketById(id));
         }
 
+
         public ActionResult Create(int id)
         {
             ViewBag.ClientId = id;
@@ -28,7 +29,6 @@ namespace Airoport.Controllers
             ViewBag.Cities = service.GetCityContext().Cities;
             return View();
         }
-
         [HttpPost]
         public ActionResult Create(Ticket ticket)
         {
@@ -43,11 +43,11 @@ namespace Airoport.Controllers
             }
         }
 
+
         public ActionResult Edit(int id)
         {
             return View();
         }
-
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -63,11 +63,11 @@ namespace Airoport.Controllers
             }
         }
 
+
         public ActionResult Delete(int id)
         {
             return View(service.FindTicketById(id));
         }
-
         [HttpPost]
         public ActionResult Delete(int id, Ticket ticket)
         {

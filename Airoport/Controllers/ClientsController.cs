@@ -21,7 +21,6 @@ namespace Airoport.Controllers
             ViewBag.Title = "Регистрация нового пользователя";
             return View();
         }
-
         [HttpPost]
         public ActionResult Create(Client client)
         {
@@ -43,11 +42,11 @@ namespace Airoport.Controllers
                 }
         }
 
+
         public ActionResult SearchClient()
         {
             return View();
         }
-
         [HttpPost]
         public ActionResult SearchClientResult(Man _man)
         {
@@ -58,12 +57,24 @@ namespace Airoport.Controllers
             if (allClientsByName.Count + allClientsBySurname.Count <= 0)
             {
                 return HttpNotFound(); 
-            }
+            } 
 
             ViewBag.allClientsByName = allClientsByName;
             ViewBag.allClientsBySurname = allClientsBySurname;
 
             return PartialView("SearchClientResult", allClients);
         }
+
+
+        public ActionResult RegistrembarkationClient()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult RegistrembarkationClient(Man _man)
+        {
+            return View();
+        }
+
     }
 }
