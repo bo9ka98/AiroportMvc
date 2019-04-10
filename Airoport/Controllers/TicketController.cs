@@ -38,7 +38,7 @@ namespace Airoport.Controllers
         public ActionResult Create(Ticket ticket)
         {
             ticket.DateBuy = DateTime.Now;
-            ticket.Id = 0;
+            //ticket.Id = 0;
             if (service.AddElementInTicketContext(ticket))
             {
                 return RedirectToAction("Index");
