@@ -71,15 +71,24 @@ namespace Airoport.Models
         {
             try
             {
+                ticket = dbTicket.Tickets.Find(ticket.Id);
+                if (ticket == null)
+                {
+                    return false;
+                }
                 dbTicket.Tickets.Remove(ticket);
                 dbTicket.SaveChanges();
-                return false;
+                return true;
             }
             catch
             {
                 return false;
             }
 
+        }
+        public Ticket FindTicketById (int id)
+        {
+            return dbTicket.Tickets.Find(id);
         }
 
         public CityContext GetCityContext()

@@ -11,20 +11,16 @@ namespace Airoport.Controllers
     {
         AService service = AService.GetInstance();
 
-        // GET: Ticket
         public ActionResult Index()
         {
             return View(service.GetEnumerableForTicketContext());
         }
 
-        // GET: Ticket/Details/5
         public ActionResult Details(int id)
         {
-            Ticket ticket = service.GetTicketContext().Tickets.Where(a => a.Id == id).First();
-            return View(ticket);
+            return View(service.FindTicketById(id));
         }
 
-        // GET: Ticket/Create
         public ActionResult Create(int id)
         {
             ViewBag.ClientId = id;
@@ -33,11 +29,10 @@ namespace Airoport.Controllers
             return View();
         }
 
-        // POST: Ticket/Create
         [HttpPost]
         public ActionResult Create(Ticket ticket)
         {
-            ticket.DateBuy = DateTime.Now;
+                ticket.DateBuy = DateTime.Now;
             //ticket.Id = 0;
             if (service.AddElementInTicketContext(ticket))
             {
@@ -49,7 +44,6 @@ namespace Airoport.Controllers
             }
         }
 
-        // GET: Ticket/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
@@ -74,7 +68,7 @@ namespace Airoport.Controllers
         // GET: Ticket/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(service.FindTicketById(id));
         }
 
         // POST: Ticket/Delete/5
