@@ -11,20 +11,17 @@ namespace Airoport.Controllers
     {
         AService service = AService.GetInstance();
 
-        // GET: Clients
         public ActionResult Index()
         {
             return View(service.GetEnumerableForClientContext());
         }
 
-        // GET: Clients/Create
         public ActionResult Create()
         {
             ViewBag.Title = "Регистрация нового пользователя";
             return View();
         }
 
-        // POST: Clients/Create
         [HttpPost]
         public ActionResult Create(Client client)
         {

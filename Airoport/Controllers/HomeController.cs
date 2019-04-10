@@ -9,8 +9,7 @@ namespace Airoport.Controllers
 {
     public class HomeController : Controller
     {
-        CityContext dbCity = new CityContext();
-        ClientContext dbClient = new ClientContext();
+        AService service = AService.GetInstance();
 
         public ActionResult Index()
         {
@@ -20,18 +19,15 @@ namespace Airoport.Controllers
         public ActionResult About()
         {
             ViewBag.MessageCity = "Возможные города для путишествия";
-            IEnumerable<City> citiesDb = dbCity.Cities;
-            ViewBag.Cities = citiesDb;
+            ViewBag.Cities = service.GetEnumerableForCityContext();
             ViewBag.MassageClient = "Возможные клиенты";
-            IEnumerable<Client> clientDb = dbClient.Clients;
-            ViewBag.Clients = clientDb;
+            ViewBag.Clients = service.GetEnumerableForClientContext();
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
+            ViewBag.Message = "Виталий - \"Я у мамы программист\"";
             return View();
         }
     }

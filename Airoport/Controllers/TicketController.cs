@@ -33,7 +33,6 @@ namespace Airoport.Controllers
         public ActionResult Create(Ticket ticket)
         {
                 ticket.DateBuy = DateTime.Now;
-            //ticket.Id = 0;
             if (service.AddElementInTicketContext(ticket))
             {
                 return RedirectToAction("Index");
@@ -49,7 +48,6 @@ namespace Airoport.Controllers
             return View();
         }
 
-        // POST: Ticket/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -65,13 +63,11 @@ namespace Airoport.Controllers
             }
         }
 
-        // GET: Ticket/Delete/5
         public ActionResult Delete(int id)
         {
             return View(service.FindTicketById(id));
         }
 
-        // POST: Ticket/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, Ticket ticket)
         {
