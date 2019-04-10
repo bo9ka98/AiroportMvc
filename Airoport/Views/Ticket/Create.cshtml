@@ -31,7 +31,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.DepartCityId, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.DepartCityId, new SelectList(@ViewData["Cities"] as SelectList, "Id", "Name"), "")
+            @Html.DropDownListFor(model => model.DepartCityId, new SelectList(@ViewBag.Cities, "Id", "Name"), "")
             @Html.ValidationMessageFor(model => model.DateTravels, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -39,7 +39,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.ArrivalCityId, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.ArrivalCityId, new SelectList(@ViewData["Cities"] as SelectList, "Id", "Name"), "Arrival")
+            @Html.DropDownListFor(model => model.ArrivalCityId, new SelectList(@ViewBag.Cities, "Id", "Name"), "Arrival")
             @Html.ValidationMessageFor(model => model.DateTravels, "", new { @class = "text-danger" })
         </div>
     </div>

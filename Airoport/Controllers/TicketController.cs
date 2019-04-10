@@ -29,7 +29,7 @@ namespace Airoport.Controllers
         {
             ViewBag.ClientId = id;
             //ViewData["Cities"]
-            ViewData["Cities"] = service.GetCityContext().Cities;
+            ViewBag.Cities = service.GetCityContext().Cities;
             return View();
         }
 
