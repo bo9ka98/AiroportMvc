@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -20,15 +21,9 @@ namespace Airoport.Models
         }
 
 
-        public ClientContext GetClientContext()
-        {
-            return dbClient;
-        }
-        public IEnumerable<Client> GetEnumerableForClientContext()
-        {
-            IEnumerable<Client> clientsEnumerable = dbClient.Clients;
-            return clientsEnumerable;
-        }
+        public ClientContext ClientContext => dbClient;
+        public IEnumerable<Client> GetEnumerableForClientContext() => dbClient.Clients;
+        public Client FindClientById(int id) => dbClient.Clients.Find(id);
         public bool AddElementInClientContext(Client client)
         {
             try
@@ -36,7 +31,9 @@ namespace Airoport.Models
                 dbClient.Clients.Add(client);
                 dbClient.SaveChanges();
                 return true;
-            }catch
+
+            }
+            catch
             {
                 return false;
             }
@@ -53,7 +50,7 @@ namespace Airoport.Models
             IEnumerable<Ticket> ticketsEnumerable = dbTicket.Tickets;
             return ticketsEnumerable;
         }
-        public bool AddElementInTicketContext(Ticket ticket)
+        public bool AddTicketInContext(Ticket ticket)
         {
             try
             {
@@ -67,7 +64,7 @@ namespace Airoport.Models
             }
 
         }
-        public bool RemoveElementOfTicketContext(Ticket ticket)
+        public bool RemoveTicketOfContext(Ticket ticket)
         {
             try
             {
@@ -86,10 +83,29 @@ namespace Airoport.Models
             }
 
         }
+        public bool EditTicketRegisteredInContext(Ticket ticket)
+        {
+            try
+            {
+                Ticket lastTicket = FindTicketById((int)ticket.Id);
+                dbTicket.Tickets.Attach(lastTicket);
+                lastTicket.Registered = ticket.Registered;
+                dbTicket.SaveChanges();
+                //dbTicket.Entry(ticket).State = EntityState.Modified;
+                return true;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                Console.WriteLine(ex.Message);  
+            }
+            return false;
+        }
         public Ticket FindTicketById (int id)
         {
             return dbTicket.Tickets.Find(id);
         }
+
 
         public CityContext GetCityContext()
         {

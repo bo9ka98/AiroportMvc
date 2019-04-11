@@ -50,9 +50,9 @@ namespace Airoport.Controllers
         [HttpPost]
         public ActionResult SearchClientResult(Man _man)
         {
-            var allClientsByName = service.GetClientContext().Clients.Where(a => (a.Name.Contains(_man.Name))).ToList();
-            var allClientsBySurname = service.GetClientContext().Clients.Where(a => (a.Surname.Contains(_man.Surname))).ToList();
-            var allClients = service.GetClientContext().Clients.Where(a => (a.Surname.Contains(_man.Surname) || a.Name.Contains(_man.Name))).ToList();
+            var allClientsByName = service.ClientContext.Clients.Where(a => (a.Name.Contains(_man.Name))).ToList();
+            var allClientsBySurname = service.ClientContext.Clients.Where(a => (a.Surname.Contains(_man.Surname))).ToList();
+            var allClients = service.ClientContext.Clients.Where(a => (a.Surname.Contains(_man.Surname) || a.Name.Contains(_man.Name))).ToList();
 
             if (allClientsByName.Count + allClientsBySurname.Count <= 0)
             {

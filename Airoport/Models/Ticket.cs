@@ -1,18 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Airoport.Models
 {
     public class Ticket
     {
-        public int Id { get; set; }
+        [HiddenInput(DisplayValue = false)]
+        public int? Id { get; set; }
+        [HiddenInput(DisplayValue = false)]
         public int ClientId { get; set; }
-        public int DepartCityId { get; set; } //set
+        [Display(Name = "Летим из")]
+        [Required(ErrorMessage = "Установите город отправления")]
+        public int DepartCityId { get; set; } //set //
+        [Display(Name = "Летим в")]
+        [Required(ErrorMessage = "Установите город прибытия")]
         public int ArrivalCityId { get; set; } //set
+        [Display(Name = "Дата отправления")]
+        [Required(ErrorMessage = "Установите дату")]
         public DateTime DateTravels { get; set; } //set
+        [HiddenInput(DisplayValue = false)]
         public DateTime DateBuy { get; set; } //set
+        [Display(Name = "Регистрация на посадку")]
         public bool Registered { get; set; } // set private
 
         public Ticket()

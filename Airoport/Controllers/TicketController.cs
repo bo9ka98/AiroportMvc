@@ -25,42 +25,54 @@ namespace Airoport.Controllers
         public ActionResult Create(int id)
         {
             ViewBag.ClientId = id;
-            //ViewData["Cities"]
-            ViewBag.Cities = service.GetCityContext().Cities;
+            ViewBag.Client = service.FindClientById(id);
+            ViewBag.Cities = service.GetEnumerableForCityContext();
             return View();
         }
         [HttpPost]
         public ActionResult Create(Ticket ticket)
         {
-                ticket.DateBuy = DateTime.Now;
-            if (service.AddElementInTicketContext(ticket))
+            ticket.DateBuy = DateTime.Now;
+            if (!ModelState.IsValid)
             {
-                return RedirectToAction("Index");
+                SetDataForEdit();
+                return View("Create",ticket);
             }
-            else
+            if (ticket.ArrivalCityId == ticket.DepartCityId)
             {
-                return View();
+                SetDataForEdit();
+                ViewBag.Message = "Ошибка - для таких трипов билет не нужен";
+                return View("Create", ticket);
+            }
+            if (!service.AddTicketInContext(ticket))
+            {
+                SetDataForEdit();
+                ViewBag.Message = "Ошибка подключения, звонить фиксикам";
+                return View("Create", ticket);
+            }
+            return RedirectToAction("Index");
+            void SetDataForEdit()
+            {
+                ViewBag.ClientId = ticket.ClientId;
+                ViewBag.Client = service.FindClientById(ticket.ClientId);
+                ViewBag.Cities = service.GetEnumerableForCityContext();
             }
         }
 
 
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(service.FindTicketById(id));
         }
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Ticket ticket)
         {
-            try
+            if (service.EditTicketRegisteredInContext(ticket))
             {
-                // TODO: Add update logic here
-
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(ticket);
         }
 
 
@@ -71,7 +83,7 @@ namespace Airoport.Controllers
         [HttpPost]
         public ActionResult Delete(int id, Ticket ticket)
         {
-            if(service.RemoveElementOfTicketContext(ticket))
+            if(service.RemoveTicketOfContext(ticket))
             { 
                 return RedirectToAction("Index");
             }
