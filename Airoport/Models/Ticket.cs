@@ -9,23 +9,27 @@ namespace Airoport.Models
 {
     public class Ticket
     {
-        [HiddenInput(DisplayValue = false)]
+        [ScaffoldColumn(false)]
         public int? Id { get; set; }
-        [HiddenInput(DisplayValue = false)]
+
+        [DataType(DataType.Text), HiddenInput(DisplayValue = true)]
         public int ClientId { get; set; }
-        [Display(Name = "Летим из")]
-        [Required(ErrorMessage = "Установите город отправления")]
+
+        [Display(Name = "Летим из"), Required(ErrorMessage = "Установите город отправления")]
         public int DepartCityId { get; set; } //set //
-        [Display(Name = "Летим в")]
-        [Required(ErrorMessage = "Установите город прибытия")]
+
+        [Display(Name = "Летим в"), Required(ErrorMessage = "Установите город прибытия")]
         public int ArrivalCityId { get; set; } //set
-        [Display(Name = "Дата отправления")]
-        [Required(ErrorMessage = "Установите дату")]
+
+        [DataType(DataType.DateTime), Display (Name = "Дата отправления"), Required(ErrorMessage = "Установите дату")]
         public DateTime DateTravels { get; set; } //set
-        [HiddenInput(DisplayValue = false)]
+
+        [HiddenInput(DisplayValue = true)]
         public DateTime DateBuy { get; set; } //set
-        [Display(Name = "Регистрация на посадку")]
+
+        [UIHint("Boolean"), Display(Name = "Регистрация на посадку")]
         public bool Registered { get; set; } // set private
+
 
         public Ticket()
         {

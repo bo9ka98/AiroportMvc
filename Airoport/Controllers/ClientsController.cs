@@ -42,8 +42,8 @@ namespace Airoport.Controllers
                 }
         }
 
-
-        public ActionResult SearchClient()
+        [Route("{config}")]
+        public ActionResult SearchClient(string config)
         {
             return View();
         }

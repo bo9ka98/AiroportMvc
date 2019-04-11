@@ -27,7 +27,7 @@ namespace Airoport.Controllers
             ViewBag.ClientId = id;
             ViewBag.Client = service.FindClientById(id);
             ViewBag.Cities = service.GetEnumerableForCityContext();
-            return View();
+            return View("Createe");
         }
         [HttpPost]
         public ActionResult Create(Ticket ticket)

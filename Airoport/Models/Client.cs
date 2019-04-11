@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -21,12 +22,14 @@ namespace Airoport.Models
 
     public class Client : Man
     {
-        public int Id { get; set; }
+        [ScaffoldColumn(false)]
+        public int? Id { get; set; }
         public List<Ticket> TicketListId { get; set; }
+        public static int countClients;
 
         public Client()
         {
-
+            countClients++;
         }
 
         public Client(string _name, string _surname) :
