@@ -21,7 +21,7 @@ namespace Airoport.Models
             db.Clients.Add(new Client("Еватерина", "Соколова"));
             db.Clients.Add(new Client("Ксения", "Соколова"));
             db.Clients.Add(new Client("Иван", "Соколова"));
-
+            //Client.countClients = db.Clients.Count();
             base.Seed(db);
         }
     }

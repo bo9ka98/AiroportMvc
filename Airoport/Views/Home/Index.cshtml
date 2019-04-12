@@ -7,13 +7,15 @@
 
     <p><a href="/Clients/SearchClient/" class="btn btn-primary btn-lg">Продать билетик</a></p>
 
-    @Html.RouteLink("Зарегистрировать пассажир",
-    new { controller = "Clients", action = "SearchClient", config = "registry" },
-    new { @class = "btn btn-primary btn-lg" })
+    <p>
+        @Html.RouteLink("Зарегистрировать пассажир",
+     new { controller = "Clients", action = "SearchClient", config = "registry" },
+     new { @class = "btn btn-primary btn-lg" })</p>
 
-    @Html.RouteLink("Сдать билет",
-    new { controller = "Clients", action = "SearchClient", config = "return" },
-    new { @class = "btn btn-primary btn-lg" })
-    
+    <p>
+        @Html.RouteLink("Сдать билет",
+     new { controller = "Clients", action = "SearchClient", config = "return" },
+     new { @class = "btn btn-primary btn-lg" })</p>
+
 </div>
 

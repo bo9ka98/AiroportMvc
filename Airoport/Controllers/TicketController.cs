@@ -27,7 +27,7 @@ namespace Airoport.Controllers
             ViewBag.ClientId = id;
             ViewBag.Client = service.FindClientById(id);
             ViewBag.Cities = service.GetEnumerableForCityContext();
-            return View("Createe");
+            return View("Create");
         }
         [HttpPost]
         public ActionResult Create(Ticket ticket)
@@ -65,7 +65,8 @@ namespace Airoport.Controllers
             return View(service.FindTicketById(id));
         }
         [HttpPost]
-        public ActionResult Edit(int id, Ticket ticket)
+        //[Bind(Include = "Registered")]
+        public ActionResult Edit(int id,  Ticket ticket)
         {
             if (service.EditTicketRegisteredInContext(ticket))
             {

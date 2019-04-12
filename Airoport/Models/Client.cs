@@ -25,6 +25,8 @@ namespace Airoport.Models
         [ScaffoldColumn(false)]
         public int? Id { get; set; }
         public List<Ticket> TicketListId { get; set; }
+
+        [ScaffoldColumn(false)]
         public static int countClients;
 
         public Client()
@@ -35,6 +37,7 @@ namespace Airoport.Models
         public Client(string _name, string _surname) :
             base(_name, _surname)
         {
+            countClients++;
         }
 
         public void AddTicket(Ticket _ticket)

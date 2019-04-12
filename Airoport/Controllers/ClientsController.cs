@@ -45,10 +45,12 @@ namespace Airoport.Controllers
         [Route("{config}")]
         public ActionResult SearchClient(string config)
         {
+            ViewBag.config = config;
             return View();
         }
+
         [HttpPost]
-        public ActionResult SearchClientResult(Man _man)
+        public ActionResult SearchClientResult(string config, Man _man)
         {
             var allClientsByName = service.ClientContext.Clients.Where(a => (a.Name.Contains(_man.Name))).ToList();
             var allClientsBySurname = service.ClientContext.Clients.Where(a => (a.Surname.Contains(_man.Surname))).ToList();

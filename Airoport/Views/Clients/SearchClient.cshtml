@@ -13,6 +13,7 @@
     {
         <h2>Поиск пассажира</h2>
         <table>
+            @Html.Hidden("config", @ViewBag.config as string)
             <tr>
                 <p>Введите имя: </p>
                 @Html.TextBox("Name")
@@ -20,7 +21,7 @@
             <tr>
                 <p>Введите фамилию: </p>
                 <td>@Html.TextBox("Surname")</td>
-                <td align="right"><input type="submit" value="Поиск" /></td>
+                <td align="right"><input type="submit" value="Поиск" class="btn btn-primary" /></td>
             </tr>
         </table>
     }

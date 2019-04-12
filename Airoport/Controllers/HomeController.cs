@@ -13,6 +13,7 @@ namespace Airoport.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.Count = Client.countClients;
             return View();
         }
 
