@@ -4,16 +4,20 @@
 
     <h3>Совпадения: @ViewBag.Message </h3>
     <ul>
-            @foreach (var item in Model)
-            {
-                <li>
-                    <p>
-                        @item.Name
-                        @item.Surname
-                        <a href="/Ticket/Create/@item.Id">Купить</a>
-                    </p>
-                </li>
-            }
+        @foreach (var item in Model)
+        {
+            <li>
+                <p>
+                    @item.Name
+                    @item.Surname
+                    <a href="/Ticket/Create/@item.Id">  Продать билет</a>
+                </p>
+            </li>
+        }
     </ul>
+
+    <hr />
+
+    <p><a href="/Clients/Create/" class="btn btn-primary btn-lg">Новый клиент</a></p>
 
 </div>

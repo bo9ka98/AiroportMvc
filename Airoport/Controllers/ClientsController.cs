@@ -64,7 +64,22 @@ namespace Airoport.Controllers
             ViewBag.allClientsByName = allClientsByName;
             ViewBag.allClientsBySurname = allClientsBySurname;
 
-            return PartialView("SearchClientResult", allClients);
+            if (config == "")
+            {
+                return PartialView("SearchClientResult", allClients);
+            }
+
+            if (config == "registr")
+            {
+                return PartialView("SearchClientRegistr", allClients);
+            }
+
+            if (config == "return")
+            {
+                return PartialView("SearchClientReturn", allClients);
+            }
+
+            throw new Exception("config имеет необычное значение");
         }
 
 
