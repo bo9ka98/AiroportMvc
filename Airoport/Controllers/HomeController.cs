@@ -36,5 +36,19 @@ namespace Airoport.Controllers
         {
             return View(service.dbLogger.ExceptionDetails);
         }
+
+        public ActionResult ExeptionDelete(int id)
+        {
+            ExceptionDetail exception = service.dbLogger.ExceptionDetails.Find(id);
+            if (exception == null)
+            {
+                ViewBag.Title = "Err";
+                return View("ExceptionLogger");
+            }
+            service.dbLogger.ExceptionDetails.Remove(exception);
+            service.dbLogger.SaveChanges();
+
+            return View("ExceptionLogger", service.dbLogger.ExceptionDetails);
+        }
     }
 }

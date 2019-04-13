@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<Airoport.Models.ExceptionDetail>
 
 @{
-    ViewBag.Title = "ExceptionLogger";
+
 }
 
 <h2>ExceptionLogger</h2>
-
+<h3>@ViewBag.Title</h3>
 <table class="table">
     <tr>
         <th>
@@ -44,8 +44,8 @@
             @Html.DisplayFor(modelItem => item.Date)
         </td>
         <td>
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Details", "ExeptionDelete", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "ExeptionDelete", new { id=item.Id })
         </td>
     </tr>
 }
