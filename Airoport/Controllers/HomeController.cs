@@ -31,5 +31,10 @@ namespace Airoport.Controllers
             ViewBag.Message = "Виталий - \"Я у мамы программист\"";
             return View();
         }
+
+        public ActionResult ExceptionLogger()
+        {
+            return View(service.dbLogger);
+        }
     }
 }

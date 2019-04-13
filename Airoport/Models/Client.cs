@@ -24,7 +24,7 @@ namespace Airoport.Models
     {
         [ScaffoldColumn(false)]
         public int? Id { get; set; }
-        public List<Ticket> TicketListId { get; set; }
+        public List<Ticket> TicketList { get; set; }
 
         [ScaffoldColumn(false)]
         public static int countClients;
@@ -42,7 +42,7 @@ namespace Airoport.Models
 
         public void AddTicket(Ticket _ticket)
         {
-            TicketListId.Add(_ticket);
+            TicketList.Add(_ticket);
         }
 
     }

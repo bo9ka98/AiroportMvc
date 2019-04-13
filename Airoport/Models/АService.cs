@@ -13,6 +13,7 @@ namespace Airoport.Models
         private ClientContext dbClient = new ClientContext();
         private TicketContext dbTicket = new TicketContext();
         private CityContext dbCity = new CityContext();
+        public LoggerContext dbLogger = new LoggerContext();
 
         private AService() { }
         public static AService GetInstance()
