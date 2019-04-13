@@ -18,6 +18,11 @@ namespace Airoport.Models
             Surname = _surname;
             Name = _name;
         }
+
+        public override string ToString()
+        {
+            return Name + Surname;
+        }
     }
 
     public class Client : Man
@@ -45,5 +50,9 @@ namespace Airoport.Models
             TicketList.Add(_ticket);
         }
 
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 }

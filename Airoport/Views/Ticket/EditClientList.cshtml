@@ -6,7 +6,9 @@
 
 <h2>@ViewBag.Title</h2>
 
+<h3>@ViewBag.Client</h3>
 <table class="table">
+    
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.ClientId)
@@ -50,9 +52,8 @@
             @Html.DisplayFor(modelItem => item.Registered)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id })
+
         </td>
     </tr>
 }

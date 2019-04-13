@@ -1,6 +1,5 @@
-﻿@using Airoport.Models
+﻿
 @{
-    ViewBag.Title = "SearchClient";
 }
 
 <div>
@@ -18,6 +17,7 @@
     <div class="form-horizontal">
         <h2>Поиск пассажира</h2>
         <hr />
+        <h3 style="color: red">@ViewBag.Err</h3>
         @Html.Hidden("config", @ViewBag.config as string)
 
         <div class="form-group">

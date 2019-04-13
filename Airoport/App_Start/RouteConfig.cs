@@ -27,7 +27,11 @@ namespace Airoport
             );
 
             routes.MapRoute(name: "Default3",
-                url: "{controller}/{action}/{id}/{*catchall}",
+                url: "{controller}/{action}/{id}/{config}",
+                defaults: new { controller = "Home", action = "Index" });
+
+            routes.MapRoute(name: "Default4",    
+                url: "{controller}/{action}/{id}/{config}/{*catchall}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional });
 
 

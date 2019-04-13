@@ -106,6 +106,10 @@ namespace Airoport.Models
         {
             return dbTicket.Tickets.Find(id);
         }
+        public List<Ticket> FindTicketListByClientId(int id)
+        {
+            return dbTicket.Tickets.Where( t => t.ClientId == id && t.Registered == false ).ToList();
+        }
 
 
         public CityContext GetCityContext()

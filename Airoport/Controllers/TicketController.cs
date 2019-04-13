@@ -50,7 +50,7 @@ namespace Airoport.Controllers
                 ViewBag.Message = "Ошибка подключения, звонить фиксикам";
                 return View("Create", ticket);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
             void SetDataForEdit()
             {
                 ViewBag.ClientId = ticket.ClientId;
@@ -64,20 +64,56 @@ namespace Airoport.Controllers
         {
             return View(service.FindTicketById(id));
         }
+        [HttpGet]
+        public ActionResult EditClientList(int id, string config)
+        {
+            ViewBag.Client = service.FindClientById(id).ToString();
+
+            if (config == "registr")
+            {
+                return View(service.FindTicketListByClientId(id));
+            }
+
+            if (config == "return")
+            {
+                return View("DeleteClientList",service.FindTicketListByClientId(id));
+            }
+
+            throw new Exception("config имеет необычное значение");
+        }
+
         [HttpPost]
         //[Bind(Include = "Registered")]
         public ActionResult Edit(int id,  Ticket ticket)
         {
             if (service.EditTicketRegisteredInContext(ticket))
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
 
             return View(ticket);
         }
 
+        
+
+
+        [HttpPost]
+        //[Bind(Include = "Registered")]
+        public ActionResult EditClientList(int id, Ticket ticket)
+        {
+            if (service.EditTicketRegisteredInContext(ticket))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View(ticket);
+        }
 
         public ActionResult Delete(int id)
+        {
+            return View(service.FindTicketById(id));
+        }
+        public ActionResult DeleteList(int id)
         {
             return View(service.FindTicketById(id));
         }
@@ -86,7 +122,8 @@ namespace Airoport.Controllers
         {
             if(service.RemoveTicketOfContext(ticket))
             { 
-                return RedirectToAction("Index");
+
+                return RedirectToAction("Index", "Home" );
             }
             else
             {
