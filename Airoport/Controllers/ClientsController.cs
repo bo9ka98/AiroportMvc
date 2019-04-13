@@ -45,7 +45,7 @@ namespace Airoport.Controllers
             }
 
 
-            return RedirectToAction("Create", "Ticket", (int)client.Id);
+            return RedirectToRoute(new { controller = "Ticket", action = "Create", id = (int)client.Id});
         }
 
 
