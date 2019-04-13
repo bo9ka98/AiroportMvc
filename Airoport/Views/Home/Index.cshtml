@@ -10,12 +10,19 @@
     <p>
         @Html.RouteLink("Зарегистрировать пассажир",
      new { controller = "Clients", action = "SearchClient", config = "registry" },
-     new { @class = "btn btn-primary btn-lg" })</p>
+     new { @class = "btn btn-primary btn-lg" })
+    </p>
 
     <p>
         @Html.RouteLink("Сдать билет",
      new { controller = "Clients", action = "SearchClient", config = "return" },
-     new { @class = "btn btn-primary btn-lg" })</p>
+     new { @class = "btn btn-primary btn-lg" })
+    </p>
 
+    <p>
+        @Html.ActionLink("ErrList", "ExceptionLogger", "Home", new { @class = "btn btn-primary btn-lg" })
+    </p>
 </div>
+
+<p> @ViewBag.Count довольных клиентов</p>
 

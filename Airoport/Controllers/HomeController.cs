@@ -34,7 +34,7 @@ namespace Airoport.Controllers
 
         public ActionResult ExceptionLogger()
         {
-            return View(service.dbLogger);
+            return View(service.dbLogger.ExceptionDetails);
         }
     }
 }
